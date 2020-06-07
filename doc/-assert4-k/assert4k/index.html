@@ -1,0 +1,305 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>assert4k - Assert4K</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">Assert4K</a>&nbsp;/&nbsp;<a href="./index.html">assert4k</a><br/>
+<br/>
+<h2>Package assert4k</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="assert.html">assert</a></h4>
+</td>
+<td>
+<p>Entry point of every assertion.
+It is supposed to be followed by <a href="that.html">that</a> ( <code> assert that &lt;actual&gt; ... </code> )</p>
+<code><span class="keyword">object </span><span class="identifier">assert</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-asserter/index.html">Asserter</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Asserter</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-assertion-block.html">AssertionBlock</a></h4>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">AssertionBlock</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-assertion-continuation.html">AssertionContinuation</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AssertionContinuation</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="case.html">case</a></h4>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">case</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-message-builder.html">MessageBuilder</a></h4>
+</td>
+<td>
+<code><span class="keyword">typealias </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;<span class="symbol">(</span><span class="identifier">T</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-null.html">Null</a></h4>
+</td>
+<td>
+<p>Entity used as parameter null check
+`` assert that obj1 <code>is</code> Null</p>
+<code><span class="keyword">object </span><span class="identifier">Null</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-with-message/index.html">WithMessage</a></h4>
+</td>
+<td>
+<p>Holds a value <a href="-with-message/index.html#T">T</a> and relative assertion's message</p>
+<code><span class="keyword">class </span><span class="identifier">WithMessage</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extensions for External Classes</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="kotlin.-string/index.html">kotlin.String</a></h4>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="contains.html">contains</a></h4>
+</td>
+<td>
+<p>Verify that actual <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> contains <a href="contains.html#assert4k$contains(assert4k.Asserter((kotlin.String)), kotlin.String)/other">other</a>
+<code> assert that "Hello" contains "He" </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains(assert4k.Asserter((kotlin.String)), kotlin.String)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.String)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.text.Regex)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Verify that actual <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> contains <a href="contains.html#assert4k$contains(assert4k.Asserter((kotlin.String)), kotlin.text.Regex)/regex">regex</a>
+<code> assert that "Hello" contains regex </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains(assert4k.Asserter((kotlin.String)), kotlin.text.Regex)/regex">regex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="contains no case.html">contains no case</a></h4>
+</td>
+<td>
+<p>Verify that actual <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> contains <a href="contains no case.html#assert4k$contains no case(assert4k.Asserter((kotlin.String)), kotlin.String)/other">other</a>
+<code> assert that "Hello" contains "He" </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains no case</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains no case(assert4k.Asserter((kotlin.String)), kotlin.String)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">contains no case</span><span class="symbol">(</span><span class="identifier" id="assert4k$contains no case(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.String)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="contains-no-case.html">containsNoCase</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">containsNoCase</span><span class="symbol">(</span><span class="identifier" id="assert4k$containsNoCase(assert4k.Asserter((kotlin.String)), kotlin.String)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">containsNoCase</span><span class="symbol">(</span><span class="identifier" id="assert4k$containsNoCase(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.String)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="equals.html">equals</a></h4>
+</td>
+<td>
+<p>Equality check between 2 objects
+<code> assert that obj1 equals obj2 </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals(assert4k.Asserter((assert4k.equals.T)), assert4k.equals.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals(assert4k.Asserter((assert4k.equals.T)), assert4k.WithMessage((assert4k.equals.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.text.Regex)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Equality check between a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> and a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html">Regex</a>
+<code> assert that "hello" `equals no case` regex </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals(assert4k.Asserter((kotlin.String)), kotlin.text.Regex)/regex">regex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="equals no case.html">equals no case</a></h4>
+</td>
+<td>
+<p>Equality check between 2 <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, ignoring the case
+<code> assert that "hello" `equals no case` "HELlo" </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals no case</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals no case(assert4k.Asserter((kotlin.String)), kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equals no case</span><span class="symbol">(</span><span class="identifier" id="assert4k$equals no case(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.String)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="equals-no-case.html">equalsNoCase</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equalsNoCase</span><span class="symbol">(</span><span class="identifier" id="assert4k$equalsNoCase(assert4k.Asserter((kotlin.String)), kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">equalsNoCase</span><span class="symbol">(</span><span class="identifier" id="assert4k$equalsNoCase(assert4k.Asserter((kotlin.String)), assert4k.WithMessage((kotlin.String)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fails.html">fails</a></h4>
+</td>
+<td>
+<p>Asserts that given function <a href="fails.html#assert4k$fails(kotlin.Function0((kotlin.Unit)))/block">block</a> fails by throwing an exception.
+<code> assert that fails { throw Exception() } </code></p>
+<code><span class="keyword">fun </span><span class="identifier">fails</span><span class="symbol">(</span><span class="identifier" id="assert4k$fails(kotlin.Function0((kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-assertion-continuation.html"><span class="identifier">AssertionContinuation</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="invoke.html">invoke</a></h4>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">T</span><span class="symbol">.</span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="assert4k$invoke(assert4k.invoke.T, kotlin.Function1((assert4k.invoke.T, kotlin.String)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="-message-builder.html"><span class="identifier">MessageBuilder</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is.html">is</a></h4>
+</td>
+<td>
+<p>Null check of an object
+`` assert that obj1 <code>is</code> Null</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is</span><span class="symbol">(</span><span class="identifier" id="assert4k$is(assert4k.Asserter((assert4k.is.T)), assert4k.Null)/_null">_null</span><span class="symbol">:</span>&nbsp;<a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is</span><span class="symbol">(</span><span class="identifier" id="assert4k$is(assert4k.Asserter((assert4k.is.T)), assert4k.WithMessage((assert4k.Null)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is not.html">is not</a></h4>
+</td>
+<td>
+<p>Null check of an object
+`` assert that obj1 <code>is</code> Null</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is not</span><span class="symbol">(</span><span class="identifier" id="assert4k$is not(assert4k.Asserter((assert4k.is not.T)), assert4k.Null)/_null">_null</span><span class="symbol">:</span>&nbsp;<a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is not</span><span class="symbol">(</span><span class="identifier" id="assert4k$is not(assert4k.Asserter((assert4k.is not.T)), assert4k.WithMessage((assert4k.Null)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is not null.html">is not null</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is not null</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is not null</span><span class="symbol">(</span><span class="identifier" id="assert4k$is not null(assert4k.Asserter((assert4k.is not null.T)), kotlin.Function1((assert4k.Null, kotlin.String)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="-message-builder.html"><span class="identifier">MessageBuilder</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is null.html">is null</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is null</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">is null</span><span class="symbol">(</span><span class="identifier" id="assert4k$is null(assert4k.Asserter((assert4k.is null.T)), kotlin.Function1((assert4k.Null, kotlin.String)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="-message-builder.html"><span class="identifier">MessageBuilder</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-not.html">isNot</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNot</span><span class="symbol">(</span><span class="identifier" id="assert4k$isNot(assert4k.Asserter((assert4k.isNot.T)), assert4k.Null)/_null">_null</span><span class="symbol">:</span>&nbsp;<a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNot</span><span class="symbol">(</span><span class="identifier" id="assert4k$isNot(assert4k.Asserter((assert4k.isNot.T)), assert4k.WithMessage((assert4k.Null)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-not-null.html">isNotNull</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNotNull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNotNull</span><span class="symbol">(</span><span class="identifier" id="assert4k$isNotNull(assert4k.Asserter((assert4k.isNotNull.T)), kotlin.Function1((assert4k.Null, kotlin.String)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="-message-builder.html"><span class="identifier">MessageBuilder</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-null.html">isNull</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isNull</span><span class="symbol">(</span><span class="identifier" id="assert4k$isNull(assert4k.Asserter((assert4k.isNull.T)), kotlin.Function1((assert4k.Null, kotlin.String)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="-message-builder.html"><span class="identifier">MessageBuilder</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="not equals.html">not equals</a></h4>
+</td>
+<td>
+<p>Equality check between 2 objects
+<code> assert that obj1 `not equals` obj2 </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">not equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$not equals(assert4k.Asserter((assert4k.not equals.T)), assert4k.not equals.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">not equals</span><span class="symbol">(</span><span class="identifier" id="assert4k$not equals(assert4k.Asserter((assert4k.not equals.T)), assert4k.WithMessage((assert4k.not equals.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="not same.html">not same</a></h4>
+</td>
+<td>
+<p>Instance check between 2 objects
+`` assert obj1 same obj2</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">not same</span><span class="symbol">(</span><span class="identifier" id="assert4k$not same(assert4k.Asserter((assert4k.not same.T)), assert4k.not same.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">not same</span><span class="symbol">(</span><span class="identifier" id="assert4k$not same(assert4k.Asserter((assert4k.not same.T)), assert4k.WithMessage((assert4k.not same.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="not-equals.html">notEquals</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">notEquals</span><span class="symbol">(</span><span class="identifier" id="assert4k$notEquals(assert4k.Asserter((assert4k.notEquals.T)), assert4k.notEquals.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">notEquals</span><span class="symbol">(</span><span class="identifier" id="assert4k$notEquals(assert4k.Asserter((assert4k.notEquals.T)), assert4k.WithMessage((assert4k.notEquals.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="not-same.html">notSame</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">notSame</span><span class="symbol">(</span><span class="identifier" id="assert4k$notSame(assert4k.Asserter((assert4k.notSame.T)), assert4k.notSame.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">notSame</span><span class="symbol">(</span><span class="identifier" id="assert4k$notSame(assert4k.Asserter((assert4k.notSame.T)), assert4k.WithMessage((assert4k.notSame.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="same.html">same</a></h4>
+</td>
+<td>
+<p>Instance check between 2 objects
+`` assert obj1 same obj2</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">same</span><span class="symbol">(</span><span class="identifier" id="assert4k$same(assert4k.Asserter((assert4k.same.T)), assert4k.same.T)/expected">expected</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">same</span><span class="symbol">(</span><span class="identifier" id="assert4k$same(assert4k.Asserter((assert4k.same.T)), assert4k.WithMessage((assert4k.same.T)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="that.html">that</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, assert4k.that.T)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, assert4k.AssertionContinuation((assert4k.that.T)))/continuation">continuation</span><span class="symbol">:</span>&nbsp;<a href="-assertion-continuation.html"><span class="identifier">AssertionContinuation</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, assert4k.WithMessage((kotlin.Boolean)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, assert4k.WithMessage((kotlin.Function0((kotlin.Boolean)))))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Assert that <a href="that.html#assert4k$that(assert4k.assert, kotlin.Boolean)/actual">actual</a> returns a <code>true</code> value
+<code> assert that myClass.isReady() </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, kotlin.Boolean)/actual">actual</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Assert that lambda <a href="that.html#assert4k$that(assert4k.assert, kotlin.Function0((kotlin.Boolean)))/block">block</a> returns a <code>true</code> value
+<code> assert that { obj1 != obj2 } </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="assert.html"><span class="identifier">assert</span></a><span class="symbol">.</span><span class="identifier">that</span><span class="symbol">(</span><span class="identifier" id="assert4k$that(assert4k.assert, kotlin.Function0((kotlin.Boolean)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="to-be.html">toBe</a></h4>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">toBe</span><span class="symbol">(</span><span class="identifier" id="assert4k$toBe(assert4k.Asserter((assert4k.toBe.T)), assert4k.Null)/_null">_null</span><span class="symbol">:</span>&nbsp;<a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="-asserter/index.html"><span class="identifier">Asserter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">toBe</span><span class="symbol">(</span><span class="identifier" id="assert4k$toBe(assert4k.Asserter((assert4k.toBe.T)), assert4k.WithMessage((assert4k.Null)))/withMessage">withMessage</span><span class="symbol">:</span>&nbsp;<a href="-with-message/index.html"><span class="identifier">WithMessage</span></a><span class="symbol">&lt;</span><a href="-null.html"><span class="identifier">Null</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="with.html">with</a></h4>
+</td>
+<td>
+<p>Equality check on Exception's message.
+<code> assert that fails { throw Exception("my message") } with "my message" </code></p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span> <span class="identifier">T</span><span class="symbol">.</span><span class="identifier">with</span><span class="symbol">(</span><span class="identifier" id="assert4k$with(assert4k.with.T, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

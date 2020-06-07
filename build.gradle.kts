@@ -1,7 +1,9 @@
-import studio.forface.easygradle.dsl.dokka
+import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("multiplatform") version "1.3.72"
+    id("org.jetbrains.dokka") version "0.10.1"
 }
 
 group = "studio.forface"
@@ -41,15 +43,26 @@ kotlin {
     }
 }
 
-// Options for Kotlin
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + arrayOf(
-            "-XXLanguage:+NewInference",
-            "-Xopt-in=kotlin.RequiresOptIn"
-        )
+tasks {
+
+    // Kotlin
+    withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs = freeCompilerArgs + arrayOf(
+                "-XXLanguage:+NewInference",
+                "-Xopt-in=kotlin.RequiresOptIn"
+            )
+        }
+    }
+
+    // Dokka
+    val dokka by getting(DokkaTask::class) {
+        outputDirectory = "doc"
+        outputFormat = "html"
+
+        multiplatform {
+
+        }
     }
 }
-
-dokka()
