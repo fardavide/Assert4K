@@ -3,6 +3,7 @@ package assert4k
 import kotlin.test.Test
 import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 internal class AnyTest {
 
@@ -27,9 +28,10 @@ internal class AnyTest {
 
     @Test
     fun `WithMessage works on reflective assertion`() {
-        assertFails(message = "That must be true!") {
+        val e = assertFails {
             assert that A("Hello").isFalse { "That must be true!" }
         }
+        assert that e.message equals "That must be true!"
     }
     // endregion
 
