@@ -1,6 +1,7 @@
 package assert4k.internal
 
 import assert4k.AssertionContinuation
+import assert4k.SuspendAssertionContinuation
 
 @PublishedApi
 internal fun <T> continuation(
@@ -8,10 +9,9 @@ internal fun <T> continuation(
 ) = object : AssertionContinuation<T>() {
     override fun invoke() = block()
 }
-
-internal fun <T> continuationOf(
-    assertionBlock: (() -> Unit) -> T,
-    block: () -> Unit
-) = object : AssertionContinuation<T>() {
-    override fun invoke() = assertionBlock(block)
+@PublishedApi
+internal suspend fun <T> coContinuation(
+    block: suspend () -> T
+) = object : SuspendAssertionContinuation<T>() {
+    override suspend fun invoke() = block()
 }

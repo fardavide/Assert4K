@@ -1,13 +1,19 @@
+import org.gradle.kotlin.dsl.publishing
+import org.gradle.kotlin.dsl.version
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import studio.forface.easygradle.dsl.*
+
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
 
 plugins {
     kotlin("multiplatform") version "1.3.72"
-    id("org.jetbrains.dokka") version "0.10.1"
 }
-
-group = "studio.forface"
-version = "0.1"
 
 repositories {
     mavenCentral()
@@ -17,12 +23,14 @@ repositories {
 kotlin {
 
     jvm()
+    js()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
                 implementation(kotlin("test-common"))
+                implementation(coroutines("common"))
             }
         }
         val commonTest by getting {
@@ -33,6 +41,7 @@ kotlin {
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(coroutines())
             }
         }
         jvm().compilations["test"].defaultSourceSet {
@@ -40,8 +49,22 @@ kotlin {
                 implementation(kotlin("test-junit"))
             }
         }
+        js().compilations["main"].defaultSourceSet {
+            dependencies {
+                implementation(kotlin("test-js"))
+                implementation(coroutines("js"))
+            }
+        }
+        js().compilations["test"].defaultSourceSet {
+            dependencies {
+//                implementation(kotlin("test-junit"))
+            }
+        }
     }
 }
+
+fun coroutines(post: String? = null) =
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }:1.3.7"
 
 tasks {
 
@@ -55,14 +78,60 @@ tasks {
             )
         }
     }
+}
 
-    // Dokka
-    val dokka by getting(DokkaTask::class) {
-        outputDirectory = "doc"
-        outputFormat = "html"
+val dokka = dokka {
+    outputDirectory = "doc"
+    outputFormat = "html"
 
-        multiplatform {
+    multiplatform {
 
+    }
+}
+
+apply<MavenPublishPlugin>()
+
+val javaDocsJar = tasks.create<Jar>("javaDocsJar") {
+    tasks.withType<DokkaTask>().firstOrNull()?.let { dokka ->
+        dependsOn(dokka)
+        from(dokka.outputDirectory)
+    }
+    archiveClassifier.set("javadoc")
+}
+
+val emptySourceJar = tasks.create<Jar>("emptySourcesJar") {
+    archiveClassifier.set("sources")
+}
+
+group = "studio.forface"
+version = "0.2.1"
+
+afterEvaluate {
+    publishing {
+
+        publications.withType<MavenPublication> {
+
+            artifact(javaDocsJar)
+//            artifact(sourcesJar)
+
+            pom {
+                name.set("assert4k")
+                scm {
+                    url.set("https://github.com/4face-studi0/Assert4K")
+                }
+            }
+        }
+
+        repositories {
+            maven(
+                "https://bintray.com/4face/4face/"
+            ) {
+                credentials {
+                    username = "4face"
+                    password = "API_KEY_HERE"
+                }
+            }
         }
     }
 }
+

@@ -27,8 +27,13 @@ interface Asserter<out T> {
     val value: T?
 }
 
-abstract class AssertionContinuation<T> internal constructor() {
+abstract class AssertionContinuation<T> @PublishedApi internal constructor() {
     internal abstract operator fun invoke() : T
 }
+abstract class SuspendAssertionContinuation<T> @PublishedApi internal constructor() {
+    internal abstract suspend operator fun invoke() : T
+}
+
+typealias Cont<T> = () -> T
 
 object AssertionBlock

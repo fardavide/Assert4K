@@ -5,6 +5,7 @@ package assert4k
 import assert4k.internal.contains
 import assert4k.internal.containsNoCase
 import assert4k.internal.equals
+import kotlin.js.JsName
 import kotlin.jvm.JvmName
 import kotlin.test.assertEquals
 
@@ -33,9 +34,11 @@ infix fun Asserter<String>.equals(withMessage: WithMessage<Regex>) =
  * Equality check between 2 [String], ignoring the case
  * `` assert that "hello" `equals no case` "HELlo" ``
  */
+@JsName("equals_no_case")
 infix fun Asserter<String>.`equals no case`(expected: String) =
     assertEquals(expected.toUpperCase(), value?.toUpperCase())
 // region overloads
+@JsName("equals_no_case_with_message")
 infix fun Asserter<String>.`equals no case`(withMessage: WithMessage<String>) =
     assertEquals(withMessage.value.toUpperCase(), value?.toUpperCase(), withMessage.message)
 
@@ -79,9 +82,11 @@ infix fun Asserter<String>.contains(withMessage: WithMessage<Regex>) =
  * Verify that actual [String] contains [other]
  * `` assert that "Hello" contains "He" ``
  */
+@JsName("contains_no_case")
 infix fun Asserter<String>.`contains no case`(other: String) =
     assert that (value containsNoCase other) { "Expected <$value> to contains <$other>" }
 // region overloads
+@JsName("contains_no_case_with_message")
 infix fun Asserter<String>.`contains no case`(withMessage: WithMessage<String>) =
     assert that (value containsNoCase withMessage.value) { withMessage.message }
 

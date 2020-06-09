@@ -2,6 +2,7 @@
 
 package assert4k
 
+import kotlin.js.JsName
 import kotlin.jvm.JvmName
 import kotlin.test.*
 
@@ -43,9 +44,11 @@ infix fun <T> Asserter<T>.equals(withMessage: WithMessage<T>) =
  * Equality check between 2 objects
  * `` assert that obj1 `not equals` obj2 ``
  */
+@JsName("not_equals")
 infix fun <T> Asserter<T>.`not equals`(expected: T) =
     assertNotEquals(expected, value)
 // region overloads
+@JsName("not_equals_with_message")
 infix fun <T> Asserter<T>.`not equals`(withMessage: WithMessage<T>) =
     assertNotEquals(withMessage.value, value, withMessage.message)
 
@@ -71,9 +74,11 @@ infix fun <T> Asserter<T>.same(withMessage: WithMessage<T>) =
  * Instance check between 2 objects
  * `` assert obj1 same obj2
  */
+@JsName("not_same")
 infix fun <T> Asserter<T>.`not same`(expected: T) =
     assertNotSame(expected, value)
 // region overloads
+@JsName("not_same_with_message")
 infix fun <T> Asserter<T>.`not same`(withMessage: WithMessage<T>) =
     assertNotSame(withMessage.value, value, withMessage.message)
 
