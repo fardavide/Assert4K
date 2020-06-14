@@ -38,7 +38,7 @@ infix fun Asserter<String>.equals(withMessage: WithMessage<Regex>) =
 infix fun Asserter<String>.`equals no case`(expected: String) =
     assertEquals(expected.toUpperCase(), value?.toUpperCase())
 // region overloads
-@JsName("equals_no_case_with_message")
+@JsName("equals_no_case$1")
 infix fun Asserter<String>.`equals no case`(withMessage: WithMessage<String>) =
     assertEquals(withMessage.value.toUpperCase(), value?.toUpperCase(), withMessage.message)
 
@@ -86,7 +86,7 @@ infix fun Asserter<String>.contains(withMessage: WithMessage<Regex>) =
 infix fun Asserter<String>.`contains no case`(other: String) =
     assert that (value containsNoCase other) { "Expected <$value> to contains <$other>" }
 // region overloads
-@JsName("contains_no_case_with_message")
+@JsName("contains_no_case$1")
 infix fun Asserter<String>.`contains no case`(withMessage: WithMessage<String>) =
     assert that (value containsNoCase withMessage.value) { withMessage.message }
 

@@ -48,7 +48,7 @@ infix fun <T> Asserter<T>.equals(withMessage: WithMessage<T>) =
 infix fun <T> Asserter<T>.`not equals`(expected: T) =
     assertNotEquals(expected, value)
 // region overloads
-@JsName("not_equals_with_message")
+@JsName("not_equals$1")
 infix fun <T> Asserter<T>.`not equals`(withMessage: WithMessage<T>) =
     assertNotEquals(withMessage.value, value, withMessage.message)
 
@@ -78,7 +78,7 @@ infix fun <T> Asserter<T>.same(withMessage: WithMessage<T>) =
 infix fun <T> Asserter<T>.`not same`(expected: T) =
     assertNotSame(expected, value)
 // region overloads
-@JsName("not_same_with_message")
+@JsName("not_same$1")
 infix fun <T> Asserter<T>.`not same`(withMessage: WithMessage<T>) =
     assertNotSame(withMessage.value, value, withMessage.message)
 

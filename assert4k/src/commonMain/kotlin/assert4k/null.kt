@@ -16,10 +16,12 @@ object Null
  * Null check of an object
  * `` assert that obj1 `is` Null
  */
+@JsName("is")
 infix fun <T : Any?> Asserter<T>.`is`(_null: Null) =
     assertNull(value)
 // region overloads
 // `is` w/ msg
+@JsName("is$1")
 infix fun <T : Any?> Asserter<T>.`is`(withMessage: WithMessage<Null>) =
     assertNull(value, withMessage.message)
 
@@ -29,7 +31,7 @@ fun <T : Any?> Asserter<T>.`is null`() =
     `is`(Null)
 
 // `is null` w/ msg
-@JsName("is_null_with_message")
+@JsName("is_null$1")
 infix fun <T : Any?> Asserter<T>.`is null`(message: MessageBuilder<Null>) =
     `is`(Null(message))
 
@@ -59,7 +61,7 @@ infix fun <T : Any> Asserter<T?>.`is not`(_null: Null) =
     assertNotNull(value)
 // region overloads
 // `is not` w/ msg
-@JsName("is_not_with_message")
+@JsName("is_not$1")
 infix fun <T : Any> Asserter<T?>.`is not`(withMessage: WithMessage<Null>) =
     assertNotNull(value, withMessage.message)
 
@@ -69,7 +71,7 @@ fun <T : Any> Asserter<T?>.`is not null`() =
     `is not`(Null)
 
 // `is not null` w/ msg
-@JsName("is_not_null_with_message")
+@JsName("is_not_null$1")
 infix fun <T : Any> Asserter<T?>.`is not null`(message: MessageBuilder<Null>) =
     `is not`(Null { message(Null) })
 
