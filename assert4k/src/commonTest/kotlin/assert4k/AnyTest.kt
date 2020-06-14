@@ -40,7 +40,6 @@ internal class AnyTest {
 
     // region equals
     @Test
-    @JsName("succeed_with_equal_objects")
     fun `succeed with equal objects`() {
         assert that A("Hello") equals A("Hello")
     }
@@ -55,7 +54,6 @@ internal class AnyTest {
     }
 
     @Test
-    @JsName("fails_with_different_objects")
     fun `fails with different objects`() {
         assertFails {
             assert that A("Hello") equals A("Ciao")

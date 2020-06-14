@@ -48,6 +48,7 @@ infix fun <T, C : Collection<T>> Asserter<C>.`is`(withMessage: WithMessage<empty
 @JsName("null_or_empty")
 infix fun Null.or(_empty: empty) = `null or empty`
 
+@JsName("null_or_empty$1")
 object `null or empty`
 
 /**

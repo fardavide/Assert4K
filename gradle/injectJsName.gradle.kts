@@ -26,15 +26,16 @@ fun File.allSourceFiles(): List<File> {
 val files = SRC_DIR.allSourceFiles() + TEST_DIR.allSourceFiles()
 println("Injecting @JsName in ${files.size} files")
 
+// Keep track of name of annotated function with a count for each name, for avoid to have duplicated names,
+// since Js doesn't support function with different parameters but same name
+val fixedMap = mutableMapOf<String, Int>()
+
 for (file in files) {
     val tmp = File.createTempFile("tmp_", null, file.parentFile)
 
     tmp.bufferedWriter().use { writer ->
 
         var lastLine: String? = null
-        // Keep track of name of annotated function with a count for each name, for avoid to have duplicated names,
-        // since Js doesn't support function with different parameters but same name
-        val fixedMap = mutableMapOf<String, Int>()
         file.forEachLine { line ->
             val lastLineTrim = lastLine?.trim()
 
@@ -45,7 +46,10 @@ for (file in files) {
             line.trim()
                 // Skip comments
                 .takeIf { !it.startsWith("/") && !it.startsWith("*") }
-                ?.substringAfter("fun", missingDelimiterValue = "")
+                ?.let {
+                    it.substringAfter("fun").substringAfter("object")
+                        .takeIf { result -> result != it }
+                }
                 ?.substringAfter("`", missingDelimiterValue = "")
                 ?.substringBefore("`", missingDelimiterValue = "")
                 ?.takeIf { it.isNotBlank() }

@@ -21,12 +21,12 @@ val `null` = Null
  * Null check of an object
  * `` assert that obj1 `is` Null
  */
-@JsName("is")
+@JsName("is$4")
 infix fun <T : Any?> Asserter<T>.`is`(_null: Null) =
     assertNull(value)
 // region overloads
 // `is` w/ msg
-@JsName("is$1")
+@JsName("is$5")
 infix fun <T : Any?> Asserter<T>.`is`(withMessage: WithMessage<Null>) =
     assertNull(value, withMessage.message)
 
@@ -61,12 +61,12 @@ infix fun <T : Any?> Asserter<T>.toBe(withMessage: WithMessage<Null>) =
  * Null check of an object
  * `` assert that obj1 `is` Null
  */
-@JsName("is_not")
+@JsName("is_not$2")
 infix fun <T : Any> Asserter<T?>.`is not`(_null: Null) =
     assertNotNull(value)
 // region overloads
 // `is not` w/ msg
-@JsName("is_not$1")
+@JsName("is_not$3")
 infix fun <T : Any> Asserter<T?>.`is not`(withMessage: WithMessage<Null>) =
     assertNotNull(value, withMessage.message)
 

@@ -7,7 +7,7 @@ internal class CollectionTest {
 
     // region contains
     @Test
-    @JsName("contains_succeed_if_actual_contains_other")
+    @JsName("contains_succeed_if_actual_contains_other$1")
     fun `contains succeed if actual contains other`() {
         assert that listOf(1, 3, 5) contains 3
     }
