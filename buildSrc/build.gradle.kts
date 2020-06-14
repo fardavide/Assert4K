@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    val easyGradle = "1.5-alpha-26" // Released: Jun 09, 2020
+    val easyGradle = "1.5-beta-4" // Released: Jun 14, 2020
 
     implementation("studio.forface.easygradle:dsl:$easyGradle")
 }

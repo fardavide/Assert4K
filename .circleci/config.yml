@@ -46,6 +46,7 @@ workflows:
 #      - analyze
       - test
       - publish:
+          context: Bintray
 #          requires:
 #            - analyze
 #            - test
