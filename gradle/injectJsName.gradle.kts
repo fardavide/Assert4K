@@ -47,12 +47,12 @@ for (file in files) {
                 .takeIf { !it.startsWith("/") && !it.startsWith("*") }
                 ?.substringAfter("fun", missingDelimiterValue = "")
                 ?.substringAfter("`", missingDelimiterValue = "")
-                ?.substringBeforeLast("`", missingDelimiterValue = "")
+                ?.substringBefore("`", missingDelimiterValue = "")
                 ?.takeIf { it.isNotBlank() }
                 ?.let {
                     // Reuse @JvmName if any
                     val origName = lastLineTrim
-                        ?.takeIf { line -> line.startsWith("@JvmName(") }
+                        ?.takeIf { last -> last.startsWith("@JvmName(") }
                         ?.substringAfter("@JvmName(\"")
                         ?.substringBefore("\")")
                         ?: it

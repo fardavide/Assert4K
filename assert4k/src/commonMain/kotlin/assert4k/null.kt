@@ -13,6 +13,11 @@ import kotlin.test.assertNull
 object Null
 
 /**
+ * Alternative to [Null]
+ */
+val `null` = Null
+
+/**
  * Null check of an object
  * `` assert that obj1 `is` Null
  */
