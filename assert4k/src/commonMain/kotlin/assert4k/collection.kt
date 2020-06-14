@@ -10,7 +10,7 @@ import kotlin.jvm.JvmName
  * `` assert that listOf(1, 2, 3) contains 3 ``
  */
 infix fun <T, C : Collection<T>> Asserter<C>.contains(item: T) =
-    assert that (value?.contains(item) ?: false) {
+    assert that value contains item {
         buildString {
             append("Expected Collection to contains <$item>, ")
             if (value == null) append("but is null")
@@ -30,7 +30,7 @@ object empty
  */
 @JsName("is")
 infix fun <T, C : Collection<T>> Asserter<C>.`is`(_empty: empty) =
-    assert that (value?.isEmpty() ?: false) {
+    assert that value `is` empty {
         buildString {
             append("Expected Collection to be empty, ")
             if (value == null) append("but is null")
@@ -57,8 +57,8 @@ object `null or empty`
  */
 @JsName("is$2")
 infix fun <T, C : Collection<T>> Asserter<C>.`is`(nullOrEmpty: `null or empty`) =
-    assert that (value.isNullOrEmpty()) {
-            "Expected Collection to be empty, but has ${value?.size} elements"
+    assert that value `is` `null or empty` {
+        "Expected Collection to be empty, but has ${value?.size} elements"
     }
 
 // region overloads
@@ -74,7 +74,7 @@ infix fun <T, C : Collection<T>> Asserter<C>.`is`(withMessage: WithMessage<`null
  */
 @JsName("is_not")
 infix fun <T, C : Collection<T>> Asserter<C>.`is not`(_empty: empty) =
-    assert that (value?.isNotEmpty() ?: false) {
+    assert that value `is not` empty {
         buildString {
             append("Expected Collection to not be empty, ")
             if (value == null) append("but is null")

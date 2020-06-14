@@ -4,6 +4,8 @@ import studio.forface.easygradle.dsl.*
 
 plugins {
     kotlin("multiplatform") version "1.3.72"
+    java
+    jacoco
 }
 
 kotlin {
@@ -62,6 +64,33 @@ tasks {
                 "-XXLanguage:+NewInference",
                 "-Xopt-in=kotlin.RequiresOptIn"
             )
+        }
+    }
+
+    // JacCoCo
+    withType<JacocoReport> {
+        dependsOn("jvmTest")
+        group = "Reporting"
+        description = "Generate Jacoco coverage reports."
+        val coverageSourceDirs = arrayOf(
+            "commonMain/src",
+            "jvmMain/src"
+        )
+        val classFiles = File("${buildDir}/classes/kotlin/jvm/")
+            .walkBottomUp()
+            .toSet()
+        classDirectories.setFrom(classFiles)
+        sourceDirectories.setFrom(files(coverageSourceDirs))
+        additionalSourceDirs.setFrom(files(coverageSourceDirs))
+
+        executionData
+            .setFrom(files("${buildDir}/jacoco/jvmTest.exec"))
+        reports {
+            xml.isEnabled = true
+            csv.isEnabled = false
+            html.isEnabled = true
+            html.destination =
+                File("${rootDir}/config/jacoco/reports/html")
         }
     }
 }
