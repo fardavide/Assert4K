@@ -17,24 +17,31 @@ infix fun <T> assert.that(value: T?): Asserter<T> = object : Asserter<T> {
 }
 
 /**
- * @return [AssertionBlock] for continue without an actual value
- * `` assert that fails { /* failing code here */ } ``
+ * Runs a multi-assertion
+ * @see plus
  */
 infix fun <T> assert.that(continuation: AssertionContinuation<T>) =
     continuation()
 
 /**
+ * @return [AssertionBlock] for continue without an actual value
+ * `` assert that fails { /* failing code here */ } ``
+ */
+infix fun <T> assert.that(multiAssertions: Pair<T, (Asserter<T>) -> Unit>) =
+    multiAssertions.second(that(multiAssertions.first))
+
+/**
  * Enable to run multiple assertions using the receiver [Asserter] as lambda parameter
  * ```
-assert that "hello" { string ->
+assert that "hello" +{ string ->
     string `not equals` "ciao"
     string contains "lo"
 }
  * ```
  */
-operator fun <T> Asserter<T>.invoke(assertionsBlock: (Asserter<T>) -> Unit) {
-    assertionsBlock(this)
-}
+infix operator fun <T> T.plus(assertionsBlock: (Asserter<T>) -> Unit) =
+    this to assertionsBlock
+
 
 interface Asserter<out T> {
     val value: T?

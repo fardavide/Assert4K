@@ -1,7 +1,6 @@
 package assert4k
 
 import kotlin.js.JsName
-import kotlin.jvm.JvmName
 import kotlin.test.Test
 import kotlin.test.assertFails
 
@@ -11,6 +10,17 @@ internal class AnyTest {
         val isTrue get() = true
         val isFalse get() = false
     }
+
+    // region multi assertions compile
+    @Test
+    @JsName("multi_assertions_compile_properly")
+    fun `multi assertions compile properly`() {
+        assert that "hello" +{ s: Asserter<String> ->
+            s equals "hello"
+            s contains "he"
+        }
+    }
+    // endregion
 
     // region reflective
     @Test
