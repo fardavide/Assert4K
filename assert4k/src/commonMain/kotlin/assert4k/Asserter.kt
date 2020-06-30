@@ -23,6 +23,19 @@ infix fun <T> assert.that(value: T?): Asserter<T> = object : Asserter<T> {
 infix fun <T> assert.that(continuation: AssertionContinuation<T>) =
     continuation()
 
+/**
+ * Enable to run multiple assertions using the receiver [Asserter] as lambda parameter
+ * ```
+assert that "hello" { string ->
+    string `not equals` "ciao"
+    string contains "lo"
+}
+ * ```
+ */
+operator fun <T> Asserter<T>.invoke(assertionsBlock: (Asserter<T>) -> Unit) {
+    assertionsBlock(this)
+}
+
 interface Asserter<out T> {
     val value: T?
 }
