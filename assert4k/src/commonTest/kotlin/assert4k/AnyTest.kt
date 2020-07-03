@@ -11,13 +11,29 @@ internal class AnyTest {
         val isFalse get() = false
     }
 
-    // region multi assertions compile
+    data class User(val name: String, val age: Int)
+
+    // region multi assertions
     @Test
-    @JsName("multi_assertions_compile_properly")
-    fun `multi assertions compile properly`() {
+    @JsName("multi_assertion_compile_properly")
+    fun `multi assertion compile properly`() {
         assert that "hello" +{ s: Asserter<String> ->
             s equals "hello"
             s contains "he"
+        }
+
+        assert that listOf(4, 5) +{
+            it contains 4
+            it contains 5
+        }
+    }
+
+    @Test
+    @JsName("multi_assertion_works_for_children")
+    fun `multi assertion works for children`() {
+        assert that User("Davide", 29) *{
+            +name equals "Davide"
+            +age() equals 29
         }
     }
     // endregion
