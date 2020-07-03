@@ -17,12 +17,12 @@ internal class AnyTest {
     @Test
     @JsName("multi_assertion_compile_properly")
     fun `multi assertion compile properly`() {
-        assert that "hello" +{ s: Asserter<String> ->
-            s equals "hello"
-            s contains "he"
+        assert that "hello" *{
+            it equals "hello"
+            it contains "he"
         }
 
-        assert that listOf(4, 5) +{
+        assert that listOf(4, 5) *{
             it contains 4
             it contains 5
         }

@@ -1,4 +1,4 @@
-@file:Suppress("ClassName", "unused")
+@file:Suppress("ClassName")
 
 package assert4k
 
@@ -12,35 +12,24 @@ object assert
  * @return [Asserter] for the type of [value]
  * `` assert that actualObject ... ``
  */
-infix fun <T> assert.that(value: T?): Asserter<T> = object : Asserter<T> {
-    override val value = value
+infix fun <T> assert.that(value: T?): Asserter<T> {
+    @Suppress("UNCHECKED_CAST") // safe cast
+    (value as? Pair<Any, Function2<Any, Asserter<Any>, Unit>>)?.let { (first, second) ->
+        val asserter = assert that first
+        second.invoke(first, asserter as Asserter<Any>)
+        asserter
+    }
+
+    return object : Asserter<T> {
+        override val value = value
+    }
 }
 
 /**
  * Runs a multi-assertion
- * @see plus
  */
 infix fun <T> assert.that(continuation: AssertionContinuation<T>) =
     continuation()
-
-/**
- * @return [AssertionBlock] for continue without an actual value
- * `` assert that fails { /* failing code here */ } ``
- */
-infix fun <T> assert.that(multiAssertions: Pair<T, (Asserter<T>) -> Unit>) =
-    multiAssertions.second(that(multiAssertions.first))
-
-/**
- * Enable to run multiple assertions using the receiver [Asserter] as lambda parameter
- * ```
-assert that "hello" +{ string ->
-    string `not equals` "ciao"
-    string contains "lo"
-}
- * ```
- */
-infix operator fun <T> T.plus(assertionsBlock: (Asserter<T>) -> Unit) =
-    this to assertionsBlock
 
 /**
  * Enable to run multiple assertions using the receiver [Asserter] as lambda parameter
@@ -48,6 +37,13 @@ infix operator fun <T> T.plus(assertionsBlock: (Asserter<T>) -> Unit) =
 assert that User(name = "Davide", age = 29) *{ // this = MyClass
     +name equals "Davide"
     +age equals 29
+}
+ * ```
+ * or
+ * ```
+assert that "Hello" *{ string ->
+    string `equals no case` "hello"
+    string contains "lo"
 }
  * ```
  * @see unaryPlus
@@ -66,7 +62,7 @@ assert that User(name = "Davide", age = 29) *{ // this = MyClass
  * @see times
  */
 operator fun <T> T.unaryPlus() =
-    if (this is UnaryFix<*>) assert that underlying
+    if (this is Fix<*>) assert that underlying
     else assert that this
 
 /**
@@ -74,9 +70,9 @@ operator fun <T> T.unaryPlus() =
  * `` +intValue() ``
  * @see unaryPlus
  */
-operator fun <T> T.invoke() = UnaryFix(this)
+operator fun <T> T.invoke() = Fix(this)
 
-class UnaryFix<T>(val underlying: T)
+class Fix<T>(val underlying: T)
 
 interface Asserter<out T> {
     val value: T?
@@ -88,7 +84,3 @@ abstract class AssertionContinuation<T> @PublishedApi internal constructor() {
 abstract class SuspendAssertionContinuation<T> @PublishedApi internal constructor() {
     internal abstract suspend operator fun invoke() : T
 }
-
-typealias Cont<T> = () -> T
-
-object AssertionBlock
