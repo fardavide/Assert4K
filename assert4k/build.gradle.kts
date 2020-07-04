@@ -62,7 +62,8 @@ tasks {
             jvmTarget = "1.8"
             freeCompilerArgs = freeCompilerArgs + arrayOf(
                 "-XXLanguage:+NewInference",
-                "-Xopt-in=kotlin.RequiresOptIn"
+                "-Xopt-in=kotlin.RequiresOptIn",
+                "-Xopt-in=kotlin.ExperimentalUnsignedTypes"
             )
         }
     }

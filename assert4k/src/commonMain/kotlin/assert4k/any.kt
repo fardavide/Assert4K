@@ -2,9 +2,14 @@
 
 package assert4k
 
+import assert4k.internal.smartCast
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
-import kotlin.test.*
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.assertNotSame
+import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 /**
  * Assert that [actual] returns a `true` value
@@ -33,11 +38,11 @@ infix fun assert.that(withMessage: WithMessage<() -> Boolean>) =
  * Equality check between 2 objects
  * `` assert that obj1 equals obj2 ``
  */
-infix fun <T> Asserter<T>.equals(expected: T) =
-    assertEquals(expected, value)
+inline infix fun <reified T> Asserter<T>.equals(expected: T) =
+    assertEquals(expected, value?.smartCast(expected) ?: value)
 // region overloads
-infix fun <T> Asserter<T>.equals(withMessage: WithMessage<T>) =
-    assertEquals(withMessage.value, value, withMessage.message)
+inline infix fun <reified T> Asserter<T>.equals(withMessage: WithMessage<T>) =
+    assertEquals(withMessage.value?.smartCast(value) ?: withMessage.value, value, withMessage.message)
 // endregion
 
 /**
@@ -45,17 +50,17 @@ infix fun <T> Asserter<T>.equals(withMessage: WithMessage<T>) =
  * `` assert that obj1 `not equals` obj2 ``
  */
 @JsName("not_equals")
-infix fun <T> Asserter<T>.`not equals`(expected: T) =
-    assertNotEquals(expected, value)
+inline infix fun <reified T> Asserter<T>.`not equals`(expected: T) =
+    assertNotEquals(expected, value?.smartCast(expected) ?: value)
 // region overloads
 @JsName("not_equals$1")
-infix fun <T> Asserter<T>.`not equals`(withMessage: WithMessage<T>) =
-    assertNotEquals(withMessage.value, value, withMessage.message)
+inline infix fun <reified T> Asserter<T>.`not equals`(withMessage: WithMessage<T>) =
+    assertNotEquals(withMessage.value?.smartCast(value) ?: withMessage.value, value, withMessage.message)
 
-infix fun <T> Asserter<T>.notEquals(expected: T) =
+inline infix fun <reified T> Asserter<T>.notEquals(expected: T) =
     `not equals`(expected)
 
-infix fun <T> Asserter<T>.notEquals(withMessage: WithMessage<T>) =
+inline infix fun <reified T> Asserter<T>.notEquals(withMessage: WithMessage<T>) =
     `not equals`(withMessage)
 // endregion
 

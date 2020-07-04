@@ -13,7 +13,7 @@ internal class AnyTest {
 
     data class User(val name: String, val age: Int)
 
-    // region multi assertions
+    // region multi assertion
     @Test
     @JsName("multi_assertion_compile_properly")
     fun `multi assertion compile properly`() {

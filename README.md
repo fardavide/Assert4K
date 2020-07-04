@@ -79,6 +79,20 @@ assert that "bye bye" `contains` ("BYE" no case)
 
 
 
+##### Numbers (number.kt)
+
+```kotlin
+assert that 5 equals 5.0f
+
+assert that 5 equals "5"
+
+assert that 1.5 between 1 .. 2
+
+assert that 1.5 between 1.4 .. 1.6
+```
+
+
+
 ##### Collections (collection.kt)
 
 ```kotlin
@@ -103,6 +117,21 @@ assert that fails { throw Exception("Oops!") } with "Oops!"
 assert that coFails {
   delay(100)
   throw Exception()
+}
+```
+
+
+
+##### Multiple assertions
+
+```kotlin
+assert that User(name = "Davide", age = 29) *{
+    it equals User("Davide", 29)
+
+    +name `equals no case` "davide"
+    // invoke operator can be used on some types, like number, which already
+    // have the `unaryPlus` as language feature
+    +age() between 25 .. 35
 }
 ```
 
