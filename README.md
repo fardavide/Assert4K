@@ -52,6 +52,24 @@ assert that greeting equals "good night" { "It's too early for sleep!!" }
 
 
 
+## Extensibility - custom assertions
+
+```kotlin
+infix fun Asserter<User>.`older than`(age: Int) =
+    assert that (value.age > age) { 
+        "User too young: Expected age to be greater than <$age> but is <$value>" 
+    }
+
+assert that someUser `older than` 15
+assert that someUser *{
+    it `older than` 15
+    +name equals "Davide"
+}
+```
+
+
+
+
 
 ## Some assertions
 
