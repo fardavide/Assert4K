@@ -1,4 +1,6 @@
+import com.github.dawnwords.jacoco.badge.JacocoBadgeGenerate
 import org.gradle.kotlin.dsl.version
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import studio.forface.easygradle.dsl.*
 
@@ -69,11 +71,19 @@ tasks {
         }
     }
 
+    // Dokka
+    val dokka = withType<DokkaTask> {
+        outputDirectory = "doc"
+        outputFormat = "html"
+
+        multiplatform {}
+    }
+
     // JacCoCo
     val jacocoReportsDir = "$rootDir/config/jacoco/reports"
     val jacocoXmlReport = "$jacocoReportsDir/xml"
     val jacocoHtmlReportsDir = "$jacocoReportsDir/html"
-    withType<JacocoReport> {
+    val jacoco = withType<JacocoReport> {
         dependsOn("jvmTest")
         group = "Reporting"
         description = "Generate Jacoco coverage reports."
@@ -100,18 +110,15 @@ tasks {
     }
 
     // JaCoCo badge
-    jacocoBadgeGenSetting {
-        jacocoReportPath = jacocoXmlReport
-        readmePath = "$rootDir/README.md"
+    val jacocoBadge = withType<JacocoBadgeGenerate> {
+        jacocoBadgeGenSetting {
+            jacocoReportPath = jacocoXmlReport
+            readmePath = "$rootDir/README.md"
+        }
     }
-}
 
-val dokka = dokka {
-    outputDirectory = "doc"
-    outputFormat = "html"
-
-    multiplatform {
-
+    register("prePublish") {
+        dependsOn(dokka, jacoco, jacocoBadge)
     }
 }
 

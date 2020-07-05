@@ -86,4 +86,152 @@ internal class NumberTest {
         assert that fails { assert that 5.0f between 10 .. 20 }
     }
     // endregion
+
+    // region greater than
+    @Test
+    @JsName("greater_between_Int")
+    fun `greater between Int`() {
+        assert that 10 `greater than` 5
+        assert that fails { assert that 5 `greater than` 10 }
+    }
+
+    @Test
+    @JsName("greater_between_Int_and_Float")
+    fun `greater between Int and Float`() {
+        assert that 10 `greater than` 5f
+        assert that 10 `greater than` 9.9f
+        assert that fails { assert that 5 `greater than` 10f }
+        assert that fails { assert that 10 `greater than` 10.1f }
+    }
+
+    @Test
+    @JsName("greater_between_Float")
+    fun `greater between Float`() {
+        assert that 10f `greater than` 5f
+        assert that 10.1f `greater than` 10f
+        assert that fails { assert that 5f `greater than` 10f }
+        assert that fails { assert that 9.9f `greater than` 10f }
+    }
+
+    @Test
+    @JsName("greater_between_Float_and_Int")
+    fun `greater between Float and Int`() {
+        assert that 10f `greater than` 5
+        assert that 10.1f `greater than` 10
+        assert that fails { assert that 5f `greater than` 10 }
+        assert that fails { assert that 9.9f `greater than` 10 }
+    }
+
+    @Test
+    @JsName("greater_between_Double")
+    fun `greater between Double`() {
+        assert that 10 `greater than` 5
+        assert that 10.1 `greater than` 10
+        assert that fails { assert that 5 `greater than` 10 }
+        assert that fails { assert that 9.9 `greater than` 10 }
+    }
+
+    @Test
+    @JsName("greater_between_Double_and_Int")
+    fun `greater between Double and Int`() {
+        assert that 10 `greater than` 5
+        assert that 10.1 `greater than` 10
+        assert that fails { assert that 5 `greater than` 10 }
+        assert that fails { assert that 9.9 `greater than` 10 }
+    }
+    // endregion
+
+    // region greater or equal
+    @Test
+    @JsName("greater_or_equal_between_Int")
+    fun `greater or equal between Int`() {
+        assert that 10 `greater or equal` 5
+        assert that 10 `greater or equal` 10
+        assert that fails { assert that 5 `greater or equal` 10 }
+    }
+
+    @Test
+    @JsName("greater_or_equal_between_Float_and_Int")
+    fun `greater or equal between Float and Int`() {
+        assert that 10f `greater or equal` 5
+        assert that 10f `greater or equal` 10
+        assert that 10.1f `greater or equal` 10
+        assert that fails { assert that 5f `greater or equal` 10 }
+        assert that fails { assert that 9.9f `greater or equal` 10 }
+    }
+    // endregion
+
+    // region less than
+    @Test
+    @JsName("less_between_Int")
+    fun `less between Int`() {
+        assert that 5 `less than` 10
+        assert that fails { assert that 10 `less than` 5 }
+    }
+
+    @Test
+    @JsName("less_between_Int_and_Float")
+    fun `less between Int and Float`() {
+        assert that 5 `less than` 10f
+        assert that 10 `less than` 10.1f
+        assert that fails { assert that 10 `less than` 5f }
+        assert that fails { assert that 10 `less than` 9.9f }
+    }
+
+    @Test
+    @JsName("less_between_Float")
+    fun `less between Float`() {
+        assert that 5f `less than` 10f
+        assert that 9.9f `less than` 10f
+        assert that fails { assert that 10f `less than` 5f }
+        assert that fails { assert that 10.1f `less than` 10f }
+    }
+
+    @Test
+    @JsName("less_between_Float_and_Int")
+    fun `less between Float and Int`() {
+        assert that 5f `less than` 10
+        assert that 9.9f `less than` 10
+        assert that fails { assert that 10f `less than` 5 }
+        assert that fails { assert that 10.1f `less than` 10 }
+    }
+
+    @Test
+    @JsName("less_between_Double")
+    fun `less between Double`() {
+        assert that 5 `less than` 10
+        assert that 9.9 `less than` 10
+        assert that fails { assert that 10 `less than` 5 }
+        assert that fails { assert that 10.1 `less than` 10 }
+    }
+
+    @Test
+    @JsName("less_between_Double_and_Int")
+    fun `less between Double and Int`() {
+        assert that 5 `less than` 10
+        assert that 9.9 `less than` 10
+        assert that fails { assert that 10 `less than` 5 }
+        assert that fails { assert that 10.1 `less than` 10 }
+    }
+    // endregion
+
+    // region less or equal
+    @Test
+    @JsName("less_or_equal_between_Int")
+    fun `less or equal between Int`() {
+        assert that 5 `less or equal` 10
+        assert that 10 `less or equal` 10
+        assert that fails { assert that 10 `less or equal` 5 }
+    }
+
+    @Test
+    @JsName("less_or_equal_between_Float_and_Int")
+    fun `less or equal between Float and Int`() {
+        assert that 5f `less or equal` 10
+        assert that 10f `less or equal` 10
+        assert that 9.9f `less or equal` 10
+        assert that fails { assert that 10f `less or equal` 5 }
+        assert that fails { assert that 10.1f `less or equal` 10 }
+    }
+    // endregion
 }

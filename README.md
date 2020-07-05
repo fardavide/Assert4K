@@ -104,7 +104,7 @@ assert that "bye bye" `contains` ("BYE" no case)
 ##### Numbers (number.kt)
 
 ```kotlin
-assert that 5 equals 5.0f
+assert that 5 `greater than` 5.1f
 
 assert that 5 equals "5"
 
