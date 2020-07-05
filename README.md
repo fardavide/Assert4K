@@ -1,6 +1,6 @@
 # Assert4k
 
-![METHOD](https://img.shields.io/badge/method--coverage-65%25-yellow.svg)![LINE](https://img.shields.io/badge/line--coverage-75%25-yellow.svg)![COMPLEXITY](https://img.shields.io/badge/complexity-1.83-brightgreen.svg)
+![METHOD](https://img.shields.io/badge/method--coverage-65%25-yellow.svg)  ![LINE](https://img.shields.io/badge/line--coverage-75%25-yellow.svg)  ![COMPLEXITY](https://img.shields.io/badge/complexity-1.83-brightgreen.svg)
 
 
 
