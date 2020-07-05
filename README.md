@@ -30,7 +30,7 @@ assert that developing `is` `fun`
 
 Include in your Gradle dependencies:
 ```kotlin
-implementation("studio.forface:assert4k:<last_version>")
+testImplementation("studio.forface:assert4k:<last_version>")
 ```
 and start having fun!
 
