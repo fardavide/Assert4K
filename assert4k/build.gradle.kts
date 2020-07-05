@@ -6,6 +6,7 @@ plugins {
     kotlin("multiplatform") version "1.4-M2"
     java
     jacoco
+    id("com.github.dawnwords.jacoco.badge") version "0.2.0"
 }
 
 kotlin {
@@ -69,6 +70,9 @@ tasks {
     }
 
     // JacCoCo
+    val jacocoReportsDir = "$rootDir/config/jacoco/reports"
+    val jacocoXmlReport = "$jacocoReportsDir/xml"
+    val jacocoHtmlReportsDir = "$jacocoReportsDir/html"
     withType<JacocoReport> {
         dependsOn("jvmTest")
         group = "Reporting"
@@ -77,7 +81,7 @@ tasks {
             "commonMain/src",
             "jvmMain/src"
         )
-        val classFiles = File("${buildDir}/classes/kotlin/jvm/")
+        val classFiles = File("$buildDir/classes/kotlin/jvm/")
             .walkBottomUp()
             .toSet()
         classDirectories.setFrom(classFiles)
@@ -85,14 +89,20 @@ tasks {
         additionalSourceDirs.setFrom(files(coverageSourceDirs))
 
         executionData
-            .setFrom(files("${buildDir}/jacoco/jvmTest.exec"))
+            .setFrom(files("$buildDir/jacoco/jvmTest.exec"))
         reports {
             xml.isEnabled = true
+            xml.destination = File(jacocoXmlReport)
             csv.isEnabled = false
             html.isEnabled = true
-            html.destination =
-                File("${rootDir}/config/jacoco/reports/html")
+            html.destination = File(jacocoHtmlReportsDir)
         }
+    }
+
+    // JaCoCo badge
+    jacocoBadgeGenSetting {
+        jacocoReportPath = jacocoXmlReport
+        readmePath = "$rootDir/README.md"
     }
 }
 

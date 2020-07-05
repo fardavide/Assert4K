@@ -1,5 +1,9 @@
 # Assert4k
 
+![METHOD](https://img.shields.io/badge/method--coverage-65%25-yellow.svg)![LINE](https://img.shields.io/badge/line--coverage-75%25-yellow.svg)![COMPLEXITY](https://img.shields.io/badge/complexity-1.83-brightgreen.svg)
+
+
+
 **Assert4k** is a _Kotlin Multiplatform_ assertion DSL.
 It currently supports Jvm and Js only, but many other platform will come soon.
 
