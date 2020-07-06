@@ -1,4 +1,4 @@
-rootProject.name = "Assert4"
+rootProject.name = "Assert4k"
 
 include("assert4k")
 
