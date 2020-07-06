@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import studio.forface.easygradle.dsl.*
 
 plugins {
-    kotlin("multiplatform") version "1.4-M2"
+    kotlin("multiplatform") version "1.4-M3"
     java
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"

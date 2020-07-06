@@ -32,6 +32,7 @@ internal inline fun <reified T> Double.cast(kClass: KClass<*>): T? {
         Long::class -> toLongOrNull()
         String::class -> toString()
         UInt::class -> toUIntOrNull()
+        ULong::class -> toULongOrNull()
         else -> null
     } as T?
 }
@@ -45,6 +46,7 @@ internal inline fun <reified T> Float.cast(kClass: KClass<*>): T? {
         Long::class -> toLongOrNull()
         String::class -> toString()
         UInt::class -> toUIntOrNull()
+        ULong::class -> toULongOrNull()
         else -> null
     } as T?
 }
@@ -58,6 +60,7 @@ internal inline fun <reified T> Int.cast(kClass: KClass<*>): T? {
         Long::class -> toLong()
         String::class -> toString()
         UInt::class -> toUInt()
+        ULong::class -> toULong()
         else -> null
     } as T?
 }
@@ -71,6 +74,7 @@ internal inline fun <reified T> Long.cast(kClass: KClass<*>): T? {
         Long::class -> this
         String::class -> toString()
         UInt::class -> toUInt()
+        ULong::class -> toULong()
         else -> null
     } as T?
 }
@@ -84,6 +88,7 @@ internal inline fun <reified T> String.cast(kClass: KClass<*>): T? {
         Long::class -> toLong()
         String::class -> this
         UInt::class -> toUInt()
+        ULong::class -> toULong()
         else -> null
     } as T?
 }
@@ -97,6 +102,21 @@ internal inline fun <reified T> UInt.cast(kClass: KClass<*>): T? {
         Long::class -> toLong()
         String::class -> toString()
         UInt::class -> this
+        ULong::class -> toULong()
+        else -> null
+    } as T?
+}
+
+@PublishedApi
+internal inline fun <reified T> ULong.cast(kClass: KClass<*>): T? {
+    return when (kClass) {
+        Double::class -> toDouble()
+        Float::class -> toFloat()
+        Int::class -> toInt()
+        Long::class -> toLong()
+        String::class -> toString()
+        UInt::class -> toUInt()
+        ULong::class -> this
         else -> null
     } as T?
 }

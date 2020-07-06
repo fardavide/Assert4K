@@ -1,6 +1,8 @@
 package assert4k.internal
 
 // region cast
+
+// Float
 @PublishedApi
 internal fun Float.fixToDouble() =
     toString().toDouble()
@@ -18,6 +20,11 @@ internal fun Float.toUIntOrNull() =
     if (this % 1 == 0f) toUInt() else null
 
 @PublishedApi
+internal fun Float.toULongOrNull() =
+    if (this % 1 == 0f) toLong() else null
+
+// Double
+@PublishedApi
 internal fun Double.toIntOrNull() =
     if (this % 1 == 0.0) toInt() else null
 
@@ -28,6 +35,10 @@ internal fun Double.toLongOrNull() =
 @PublishedApi
 internal fun Double.toUIntOrNull() =
     if (this % 1 == 0.0) toUInt() else null
+
+@PublishedApi
+internal fun Double.toULongOrNull() =
+    if (this % 1 == 0.0) toULong() else null
 // endregion
 
 // region compare
