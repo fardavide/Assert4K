@@ -44,12 +44,15 @@ workflows:
   analyze_test_publish:
     jobs:
 #      - analyze
-      - test
+      - test:
+          filters:
+            tags:
+              only: /.*/
       - publish:
           context: Bintray
-#          requires:
+          requires:
 #            - analyze
-#            - test
+            - test
           filters:
             # ignore any commit on any branch by default
             branches:
