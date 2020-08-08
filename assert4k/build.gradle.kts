@@ -73,9 +73,16 @@ tasks {
     }
 
     // Dokka
-    val dokka = dokkaHtml {
+    dokkaHtml {
         outputDirectory = "doc"
+        dokkaSourceSets {
+            register("commonMain") {
+                displayName = "common"
+                platform = "common"
+            }
+        }
     }
+    val dokka = register<NoDokkaTask>("dokka")
 
     // JacCoCo
     val jacocoReportsDir = "$rootDir/config/jacoco/reports"
@@ -121,3 +128,7 @@ tasks {
 }
 
 easyPublish {}
+
+abstract class NoDokkaTask: org.jetbrains.dokka.gradle.DokkaTask() {
+    override fun generate() {}
+}
