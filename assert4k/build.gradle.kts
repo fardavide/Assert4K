@@ -1,14 +1,15 @@
 import com.github.dawnwords.jacoco.badge.JacocoBadgeGenerate
-import org.gradle.kotlin.dsl.version
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import studio.forface.easygradle.dsl.*
 
 plugins {
-    kotlin("multiplatform") version "1.3.72"
+    val kotlinVersion = "1.4.0-rc"
+
+    kotlin("multiplatform") version kotlinVersion
     java
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
+    id("org.jetbrains.dokka") version kotlinVersion
+    id("studio.forface.easy-publish") version "0.2.3"
 }
 
 kotlin {
@@ -72,11 +73,8 @@ tasks {
     }
 
     // Dokka
-    val dokka = withType<DokkaTask> {
+    val dokka = dokkaHtml {
         outputDirectory = "doc"
-        outputFormat = "html"
-
-        multiplatform {}
     }
 
     // JacCoCo
@@ -122,4 +120,4 @@ tasks {
     }
 }
 
-publish()
+easyPublish {}
