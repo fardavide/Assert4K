@@ -1,5 +1,7 @@
 package assert4k
 
+import assert4k.anotherPackage.Invokable
+import assert4k.anotherPackage.invoke
 import kotlin.js.JsName
 import kotlin.test.Test
 import kotlin.test.assertFails
@@ -12,6 +14,17 @@ internal class AnyTest {
     }
 
     data class User(val name: String, val age: Int)
+
+    // region with message
+    @Test
+    @JsName("withMessage_works_properly_with_invoke_extensions")
+    fun `withMessage works properly with invoke extensions`() {
+        val invokable = Invokable(0)
+        val result = invokable { 5 }
+
+        assert that result equals 5
+    }
+    // endregion
 
     // region multi assertion
     @Test
