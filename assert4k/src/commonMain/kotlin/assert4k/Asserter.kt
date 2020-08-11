@@ -12,7 +12,7 @@ object assert
  * @return [Asserter] for the type of [value]
  * `` assert that actualObject ... ``
  */
-infix fun <T> assert.that(value: T?): Asserter<T> {
+infix fun <T> assert.that(value: T): Asserter<T> {
     @Suppress("UNCHECKED_CAST") // safe cast
     (value as? Pair<Any, Function2<Any, Asserter<Any>, Unit>>)?.let { (first, second) ->
         val asserter = assert that first

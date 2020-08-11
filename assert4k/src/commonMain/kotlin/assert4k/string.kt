@@ -2,12 +2,18 @@
 
 package assert4k
 
+import assert4k.internal.*
 import assert4k.internal.contains
-import assert4k.internal.containsNoCase
 import assert4k.internal.equals
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 import kotlin.test.assertEquals
+import kotlin.text.Regex
+import kotlin.text.RegexOption
+import kotlin.text.String
+import kotlin.text.buildString
+import kotlin.text.toRegex
+import kotlin.text.toUpperCase
 
 /**
  * @return [Regex] with [RegexOption.IGNORE_CASE]
@@ -35,7 +41,7 @@ infix fun Asserter<String>.equals(withMessage: WithMessage<Regex>) =
  * `` assert that "hello" `equals no case` "HELlo" ``
  */
 @JsName("equals_no_case")
-infix fun Asserter<String>.`equals no case`(expected: String) =
+infix fun Asserter<String?>.`equals no case`(expected: String) =
     assertEquals(expected.toUpperCase(), value?.toUpperCase())
 // region overloads
 @JsName("equals_no_case$1")

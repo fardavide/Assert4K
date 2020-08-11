@@ -62,8 +62,9 @@ infix fun <T : Any?> Asserter<T>.toBe(withMessage: WithMessage<Null>) =
  * `` assert that obj1 `is` Null
  */
 @JsName("is_not$2")
-infix fun <T : Any> Asserter<T?>.`is not`(_null: Null) =
-    assertNotNull(value)
+infix fun <T : Any> Asserter<T?>.`is not`(_null: Null): T {
+    return assertNotNull(value)
+}
 // region overloads
 // `is not` w/ msg
 @JsName("is_not$3")

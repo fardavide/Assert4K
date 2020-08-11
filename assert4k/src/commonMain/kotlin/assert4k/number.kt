@@ -2,8 +2,7 @@
 
 package assert4k
 
-import assert4k.internal.compareTo
-import assert4k.internal.smartCast
+import assert4k.internal.*
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 
@@ -16,7 +15,7 @@ infix fun Asserter<Int>.between(range: IntRange) =
         "Expected value <$value> to be between <${range.first}> and <${range.last}>"
     }
 // region overloads
-infix fun Asserter<Int>.between(withMessage: WithMessage<IntRange>) =
+infix fun Asserter<Int?>.between(withMessage: WithMessage<IntRange>) =
     assert that (value in withMessage.value) { withMessage.message }
 
 // Long
@@ -88,7 +87,7 @@ infix fun Asserter<Number>.`greater than`(expected: Number) =
     }
 // region overloads
 @JsName("greater_than$1")
-infix fun Asserter<Number>.`greater than`(withMessage: WithMessage<Number>) =
+infix fun Asserter<Number?>.`greater than`(withMessage: WithMessage<Number>) =
     assert that (value != null && value!! > withMessage.value) {
         withMessage.message
     }
@@ -104,7 +103,7 @@ infix fun Asserter<Number>.`greater or equal`(expected: Number) =
     }
 // region overloads
 @JsName("greater_or_equal$1")
-infix fun Asserter<Number>.`greater or equal`(withMessage: WithMessage<Number>) =
+infix fun Asserter<Number?>.`greater or equal`(withMessage: WithMessage<Number>) =
     assert that (value != null && value!! >= withMessage.value) {
         withMessage.message
     }
@@ -120,7 +119,7 @@ infix fun Asserter<Number>.`less than`(expected: Number) =
     }
 // region overloads
 @JsName("less_than$1")
-infix fun Asserter<Number>.`less than`(withMessage: WithMessage<Number>) =
+infix fun Asserter<Number?>.`less than`(withMessage: WithMessage<Number>) =
     assert that (value != null && value!! < withMessage.value) {
         withMessage.message
     }
@@ -137,7 +136,8 @@ infix fun Asserter<Number>.`less or equal`(expected: Number) =
     }
 // region overloads
 @JsName("less_or_equal$1")
-infix fun Asserter<Number>.`less or equal`(withMessage: WithMessage<Number>) =
+infix fun Asserter<Number?>.`less or equal`(withMessage: WithMessage<Number>) =
     assert that (value != null && value!! <= withMessage.value) {
         withMessage.message
     }
+// endregion
