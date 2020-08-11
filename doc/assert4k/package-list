@@ -1,4 +1,6 @@
 $dokka.format:html
 $dokka.linkExtension:html
 
+assert4k
+assert4k.internal
 

@@ -74,7 +74,7 @@ tasks {
 
     // Dokka
     dokkaHtml {
-        outputDirectory = "doc"
+        outputDirectory = File(rootDir, "doc").absolutePath
         dokkaSourceSets {
             register("commonMain") {
                 displayName = "common"
