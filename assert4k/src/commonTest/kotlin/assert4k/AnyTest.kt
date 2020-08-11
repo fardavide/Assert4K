@@ -1,6 +1,6 @@
 package assert4k
 
-import assert4k.anotherPackage.Invokable
+import assert4k.anotherPackage.*
 import assert4k.anotherPackage.invoke
 import kotlin.js.JsName
 import kotlin.test.Test
@@ -13,7 +13,7 @@ internal class AnyTest {
         val isFalse get() = false
     }
 
-    data class User(val name: String, val age: Int)
+    data class User(val name: String, val age: Int, val cars: List<String>)
 
     // region with message
     @Test
@@ -44,9 +44,10 @@ internal class AnyTest {
     @Test
     @JsName("multi_assertion_works_for_children")
     fun `multi assertion works for children`() {
-        assert that User("Davide", 29) *{
+        assert that User("Davide", 29, listOf("Car")) *{
             +name equals "Davide"
             +age() equals 29
+            +cars contains "Car"
         }
     }
     // endregion
