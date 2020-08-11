@@ -25,7 +25,11 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`equals no order`(withMessage: Wit
     assert that value `is not` Null
     val value = value!!
     assert that (value.size == withMessage.value.size) { withMessage.message }
-    assert that (value.containsAll(withMessage.value)) { withMessage.message }
+    val ml = value.toMutableList()
+    for (e in withMessage.value) {
+        assert that (ml.remove(e)) { withMessage.message }
+    }
+    assert that ml `is` empty { withMessage.message }
 }
 // endregion
 

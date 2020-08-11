@@ -13,6 +13,14 @@ internal class CollectionTest {
     }
 
     @Test
+    @JsName("equals_no_order_fails_with_different_count_of_same_repeated_elements")
+    fun `equals no order fails with different count of same repeated elements`() {
+        assert that fails {
+            assert that listOf(1, 1, 2) `equals no order` listOf(1, 2, 2)
+        } with "Expected Collection to contains <1, 2, 2>, but contains <1, 1, 2>"
+    }
+
+    @Test
     @JsName("equals_no_order_fails_if_has_different_number_of_elements")
     fun `equals no order fails if has different number of elements`() {
         assert that fails {
