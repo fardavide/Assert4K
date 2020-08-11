@@ -62,8 +62,10 @@ assert that User(name = "Davide", age = 29) *{ // this = MyClass
  * @see times
  */
 operator fun <T> T.unaryPlus() =
-    if (this is Fix<*>) assert that underlying
-    else assert that this
+    assert that this
+
+operator fun <T> Fix<T>.unaryPlus() =
+    assert that underlying
 
 /**
  * Applies a fix for types that has [unaryPlus] as language feature, like [Int]
