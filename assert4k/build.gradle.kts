@@ -2,13 +2,13 @@ import com.github.dawnwords.jacoco.badge.JacocoBadgeGenerate
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    val kotlinVersion = "1.4.0-rc"
+    val kotlinVersion = "1.4.0"
 
     kotlin("multiplatform") version kotlinVersion
     java
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
-    id("org.jetbrains.dokka") version kotlinVersion
+    id("org.jetbrains.dokka") version "$kotlinVersion-rc"
     id("studio.forface.easy-publish") version "0.2.3"
 }
 
@@ -56,7 +56,7 @@ kotlin {
 }
 
 fun coroutines(post: String? = null) =
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }:1.3.7-mpp-dev-11"
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }:1.3.8"
 
 tasks {
 
