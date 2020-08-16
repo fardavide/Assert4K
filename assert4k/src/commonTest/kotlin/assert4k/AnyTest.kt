@@ -102,4 +102,37 @@ internal class AnyTest {
         }
     }
     // endregion
+
+    // region is type
+    open class Super
+    class Sub: Super()
+    @Test
+    @JsName("is_type_success_if_same_type")
+    fun `is type success if same type`() {
+        assert that Super() `is` type<Super>()
+    }
+
+    @Test
+    @JsName("is_type_success_if_sub-type")
+    fun `is type success if sub-type`() {
+        assert that Sub() `is` type<Super>()
+    }
+
+    @Test
+    @JsName("is_type_fails_if_super-type")
+    fun `is type fails if super-type`() {
+        assert that fails {
+            assert that Super() `is` type<Sub>()
+        }
+    }
+
+    @Test
+    @JsName("is_type_fails_if_null")
+    fun `is type fails if null`() {
+        val nullSuper: Super? = null
+        assert that fails {
+            assert that nullSuper `is` type<Super>()
+        }
+    }
+    // endregion
 }

@@ -21,12 +21,12 @@ val `null` = Null
  * Null check of an object
  * `` assert that obj1 `is` Null
  */
-@JsName("is$4")
+@JsName("is$6")
 infix fun <T : Any?> Asserter<T>.`is`(_null: Null) =
     assertNull(value)
 // region overloads
 // `is` w/ msg
-@JsName("is$5")
+@JsName("is$7")
 infix fun <T : Any?> Asserter<T>.`is`(withMessage: WithMessage<Null>) =
     assertNull(value, withMessage.message)
 

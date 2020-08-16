@@ -5,11 +5,8 @@ package assert4k
 import assert4k.internal.smartCast
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
-import kotlin.test.assertNotSame
-import kotlin.test.assertSame
-import kotlin.test.assertTrue
+import kotlin.reflect.KClass
+import kotlin.test.*
 
 /**
  * Assert that [actual] returns a `true` value
@@ -93,3 +90,31 @@ infix fun <T> Asserter<T>.notSame(expected: T) =
 infix fun <T> Asserter<T>.notSame(withMessage: WithMessage<T>) =
     `not same`(withMessage)
 // endregion
+
+/**
+ * Type check between 2 object
+ * `` assert that "hello" `is` type<CharSequence>()
+ */
+@JsName("is$4")
+infix fun <T, V : Any> Asserter<T>.`is`(type: TypeHolder<V>) =
+    assert that value `is` type {
+        buildString {
+            append("Except value '$value' to be same type or sub-type of '${type.kClass.simpleName}', but is ")
+            append(
+                if (value == null) "null"
+                else "'${value!!::class.simpleName}'"
+            )
+        }
+    }
+// region overloads
+@JsName("is$5")
+infix fun <T, V : Any> Asserter<T>.`is`(withMessage: WithMessage<TypeHolder<V>>) =
+    assert that (value != null && withMessage.value.kClass.isInstance(value)) {
+        withMessage.message
+    }
+// endregion
+
+inline fun <reified T : Any> type() =
+    TypeHolder(T::class)
+
+class TypeHolder<T : Any>(val kClass: KClass<T>)
