@@ -10,7 +10,7 @@ plugins {
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("org.jetbrains.dokka") version dokkaVersion
-    id("studio.forface.easy-publish") version "0.2.3"
+    id("studio.forface.easy-publish") version "0.2.4"
 }
 
 kotlin {
