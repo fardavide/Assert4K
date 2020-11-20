@@ -70,18 +70,6 @@ tasks {
         }
     }
 
-    // Dokka
-    dokkaHtml {
-        outputDirectory = File(rootDir, "doc").absolutePath
-        dokkaSourceSets {
-            register("commonMain") {
-                displayName = "common"
-                platform = "common"
-            }
-        }
-    }
-    val dokka = register<NoDokkaTask>("dokka")
-
     // JacCoCo
     val jacocoReportsDir = "$rootDir/config/jacoco/reports"
     val jacocoXmlReport = "$jacocoReportsDir/xml"
@@ -121,12 +109,8 @@ tasks {
     }
 
     register("prePublish") {
-        dependsOn(dokka, jacoco, jacocoBadge)
+        dependsOn(task("dokkaHtml"), jacoco, jacocoBadge)
     }
 }
 
 easyPublish {}
-
-abstract class NoDokkaTask: org.jetbrains.dokka.gradle.DokkaTask() {
-    override fun generate() {}
-}
