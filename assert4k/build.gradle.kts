@@ -2,13 +2,14 @@ import com.github.dawnwords.jacoco.badge.JacocoBadgeGenerate
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    val kotlinVersion = "1.4.0"
+    val kotlinVersion = "1.4.20" // Nov 19, 2020
+    val dokkaVersion = "1.4.10.2" // Oct 20, 2020
 
     kotlin("multiplatform") version kotlinVersion
     java
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
-    id("org.jetbrains.dokka") version "$kotlinVersion-rc"
+    id("org.jetbrains.dokka") version dokkaVersion
     id("studio.forface.easy-publish") version "0.2.3"
 }
 
@@ -20,9 +21,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(kotlin("stdlib"))
                 implementation(kotlin("test-common"))
-                implementation(coroutines("common"))
+                implementation(coroutines())
             }
         }
         val commonTest by getting {
@@ -33,7 +33,6 @@ kotlin {
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("test"))
-                implementation(coroutines())
             }
         }
         jvm().compilations["test"].defaultSourceSet {
@@ -44,7 +43,6 @@ kotlin {
         js().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("test-js"))
-                implementation(coroutines("js"))
             }
         }
         js().compilations["test"].defaultSourceSet {
@@ -56,7 +54,7 @@ kotlin {
 }
 
 fun coroutines(post: String? = null) =
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }:1.3.8"
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }"
 
 tasks {
 
