@@ -54,7 +54,7 @@ kotlin {
 }
 
 fun coroutines(post: String? = null) =
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: "" }"
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: ":1.4.1" }"
 
 tasks {
 
