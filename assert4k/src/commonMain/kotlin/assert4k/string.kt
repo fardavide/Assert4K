@@ -2,8 +2,8 @@
 
 package assert4k
 
-import assert4k.internal.*
 import assert4k.internal.contains
+import assert4k.internal.containsNoCase
 import assert4k.internal.equals
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
@@ -29,11 +29,11 @@ object case
  * `` assert that "hello" `equals no case` regex ``
  */
 infix fun Asserter<String>.equals(regex: Regex) =
-    assert that (value equals regex) { "Expected <$value> to contains <$regex>" }
+    assert that (value equals regex) / "Expected <$value> to contains <$regex>"
 // region overloads
 @JvmName("equalsRegexWithMessage")
 infix fun Asserter<String>.equals(withMessage: WithMessage<Regex>) =
-    assert that (value equals withMessage.value) { withMessage.message }
+    assert that (value equals withMessage.value) / withMessage.message
 // endregion
 
 /**
@@ -60,7 +60,7 @@ infix fun Asserter<String>.equalsNoCase(withMessage: WithMessage<String>) =
  * `` assert that "Hello" contains "He" ``
  */
 infix fun Asserter<String>.contains(other: String) =
-    assert that (value contains other) {
+    assert that (value contains other) / {
         buildString {
             append("Expected <$value> to contains <$other>")
             if (value containsNoCase other) append(". It would match ignoring the case")
@@ -69,7 +69,7 @@ infix fun Asserter<String>.contains(other: String) =
 // region overloads
 @JvmName("containsStringWithMessage")
 infix fun Asserter<String>.contains(withMessage: WithMessage<String>) =
-    assert that (value contains withMessage.value) { withMessage.message }
+    assert that (value contains withMessage.value) / withMessage.message
 // endregion
 
 /**
@@ -77,11 +77,11 @@ infix fun Asserter<String>.contains(withMessage: WithMessage<String>) =
  * `` assert that "Hello" contains regex ``
  */
 infix fun Asserter<String>.contains(regex: Regex) =
-    assert that (value contains regex) { "Expected <$value> to contains <$regex>" }
+    assert that (value contains regex) / "Expected <$value> to contains <$regex>"
 // region overloads
 @JvmName("containsRegexWithMessage")
 infix fun Asserter<String>.contains(withMessage: WithMessage<Regex>) =
-    assert that (value contains withMessage.value) { withMessage.message }
+    assert that (value contains withMessage.value) / withMessage.message
 // endregion
 
 /**
@@ -90,11 +90,11 @@ infix fun Asserter<String>.contains(withMessage: WithMessage<Regex>) =
  */
 @JsName("contains_no_case")
 infix fun Asserter<String>.`contains no case`(other: String) =
-    assert that (value containsNoCase other) { "Expected <$value> to contains <$other>" }
+    assert that (value containsNoCase other) / "Expected <$value> to contains <$other>"
 // region overloads
 @JsName("contains_no_case$1")
 infix fun Asserter<String>.`contains no case`(withMessage: WithMessage<String>) =
-    assert that (value containsNoCase withMessage.value) { withMessage.message }
+    assert that (value containsNoCase withMessage.value) / withMessage.message
 
 infix fun Asserter<String>.containsNoCase(other: String) =
     `contains no case`(other)

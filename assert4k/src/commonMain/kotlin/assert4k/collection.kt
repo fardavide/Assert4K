@@ -11,7 +11,7 @@ import kotlin.jvm.JvmName
  */
 @JsName("equals_no_order")
 infix fun <T, C : Collection<T>> Asserter<C>.`equals no order`(expected: C) {
-    assert that value `equals no order` expected {
+    assert that value `equals no order` expected / {
         buildString {
             append("Expected Collection to contains <${expected.joinToString()}>, ")
             if (value == null) append("but is null")
@@ -24,12 +24,12 @@ infix fun <T, C : Collection<T>> Asserter<C>.`equals no order`(expected: C) {
 infix fun <T, C : Collection<T>> Asserter<C?>.`equals no order`(withMessage: WithMessage<C>) {
     assert that value `is not` Null
     val value = value!!
-    assert that (value.size == withMessage.value.size) { withMessage.message }
+    assert that (value.size == withMessage.value.size) / withMessage.message
     val ml = value.toMutableList()
     for (e in withMessage.value) {
-        assert that (ml.remove(e)) { withMessage.message }
+        assert that (ml.remove(e)) / withMessage.message
     }
-    assert that ml `is` empty { withMessage.message }
+    assert that ml `is` empty / withMessage.message
 }
 // endregion
 
@@ -38,7 +38,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`equals no order`(withMessage: Wit
  * `` assert that listOf(1, 2, 3) contains 3 ``
  */
 infix fun <T, C : Collection<T>> Asserter<C?>.contains(item: T) =
-    assert that value contains item {
+    assert that value contains item / {
         buildString {
             append("Expected Collection to contains <$item>, ")
             if (value == null) append("but is null")
@@ -47,7 +47,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.contains(item: T) =
     }
 // region overloads
 infix fun <T, C : Collection<T>> Asserter<C?>.contains(withMessage: WithMessage<T>) =
-    assert that (value?.contains(withMessage.value) ?: false) { withMessage.message }
+    assert that (value?.contains(withMessage.value) ?: false) / withMessage.message
 // endregion
 
 /**
@@ -56,7 +56,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.contains(withMessage: WithMessage<
  */
 @JsName("contains_all")
 infix fun <T, C : Collection<T>> Asserter<C>.`contains all`(items: C) {
-    assert that value `contains all` items {
+    assert that value `contains all` items / {
         buildString {
             append("Expected Collection to contains <${items.joinToString()}>, ")
             if (value == null) append("but is null")
@@ -67,7 +67,7 @@ infix fun <T, C : Collection<T>> Asserter<C>.`contains all`(items: C) {
 // region overloads
 @JsName("contains_all$1")
 infix fun <T, C : Collection<T>> Asserter<C?>.`contains all`(withMessage: WithMessage<C>) {
-    assert that (value?.containsAll(withMessage.value) ?: false) { withMessage.message }
+    assert that (value?.containsAll(withMessage.value) ?: false) / withMessage.message
 }
 // endregion
 
@@ -79,7 +79,7 @@ object empty
  */
 @JsName("is")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is`(_empty: empty) =
-    assert that value `is` empty {
+    assert that value `is` empty / {
         buildString {
             append("Expected Collection to be empty, ")
             if (value == null) append("but is null")
@@ -91,7 +91,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`is`(_empty: empty) =
 @JvmName("is_empty_with_message")
 @JsName("is$1")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is`(withMessage: WithMessage<empty>) =
-    assert that (value?.isEmpty() ?: false) { withMessage.message }
+    assert that (value?.isEmpty() ?: false) / withMessage.message
 // endregion
 
 @JsName("null_or_empty")
@@ -106,7 +106,7 @@ object `null or empty`
  */
 @JsName("is$2")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is`(nullOrEmpty: `null or empty`) =
-    assert that value `is` `null or empty` {
+    assert that value `is` `null or empty` / {
         "Expected Collection to be empty, but has ${value?.size} elements"
     }
 
@@ -114,7 +114,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`is`(nullOrEmpty: `null or empty`)
 @JvmName("is_null_or_empty_with_message")
 @JsName("is$3")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is`(withMessage: WithMessage<`null or empty`>) =
-    assert that (value.isNullOrEmpty()) { withMessage.message }
+    assert that (value.isNullOrEmpty()) / { withMessage.message }
 // endregion
 
 /**
@@ -123,7 +123,7 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`is`(withMessage: WithMessage<`nul
  */
 @JsName("is_not")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is not`(_empty: empty) =
-    assert that value `is not` empty {
+    assert that value `is not` empty / {
         buildString {
             append("Expected Collection to not be empty, ")
             if (value == null) append("but is null")
@@ -135,5 +135,5 @@ infix fun <T, C : Collection<T>> Asserter<C?>.`is not`(_empty: empty) =
 @JvmName("is__not_empty_with_message")
 @JsName("is_not$1")
 infix fun <T, C : Collection<T>> Asserter<C?>.`is not`(withMessage: WithMessage<empty>) =
-    assert that (value?.isNotEmpty() ?: false) { withMessage.message }
+    assert that (value?.isNotEmpty() ?: false) / withMessage.message
 // endregion

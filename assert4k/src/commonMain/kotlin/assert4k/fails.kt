@@ -45,4 +45,4 @@ suspend inline fun <reified T : Throwable> coFails(crossinline block: suspend ()
  * `` assert that fails { throw Exception("my message") } with "my message" ``
  */
 infix fun <T : Throwable> T.with(message: String) =
-    assert that this.message equals message { "Exception's message does not match." }
+    assert that this.message equals message / "Exception's message does not match."

@@ -72,7 +72,7 @@ internal class AnyTest {
     @JsName("WithMessage_works_on_reflective_assertion")
     fun `WithMessage works on reflective assertion`() {
         val e = assertFails {
-            assert that A("Hello").isFalse { "That must be true!" }
+            assert that A("Hello").isFalse / "That must be true!"
         }
         assert that e.message equals "That must be true!"
     }

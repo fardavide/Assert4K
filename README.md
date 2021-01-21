@@ -43,10 +43,10 @@ There are many alternatives for fits everyone's tastes. Like:
 
 
 
-For fail with a custom message, use `{ "This is my message" }`, it applies to almost every assertion.
+For fail with a custom message, use `/ "This is my message"`, it applies to almost every assertion.
 
 ```kotlin
-assert that greeting equals "good night" { "It's too early for sleep!!" }
+assert that greeting equals "good night" / "It's too early for sleep!!" 
 ```
 
 
@@ -56,7 +56,7 @@ assert that greeting equals "good night" { "It's too early for sleep!!" }
 
 ```kotlin
 infix fun Asserter<User>.`older than`(age: Int) =
-    assert that (value.age > age) { 
+    assert that (value.age > age) / { 
         "User too young: Expected age to be greater than <$age> but is <$value>" 
     }
 
@@ -96,7 +96,7 @@ assert that "bye bye" contains "bye"
 
 assert that "bye bye" `contains no case` "BYE"
 
-assert that "bye bye" `contains` ("BYE" no case)
+assert that "bye bye" contains ("BYE" no case)
 ```
 
 

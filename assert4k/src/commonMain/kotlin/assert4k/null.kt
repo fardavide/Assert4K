@@ -38,7 +38,7 @@ fun <T : Any?> Asserter<T>.`is null`() =
 // `is null` w/ msg
 @JsName("is_null$1")
 infix fun <T : Any?> Asserter<T>.`is null`(message: MessageBuilder<Null>) =
-    `is`(Null(message))
+    `is`(Null / message)
 
 // isNull
 fun <T : Any?> Asserter<T>.isNull() =
@@ -79,7 +79,7 @@ fun <T : Any> Asserter<T?>.`is not null`() =
 // `is not null` w/ msg
 @JsName("is_not_null$1")
 infix fun <T : Any> Asserter<T?>.`is not null`(message: MessageBuilder<Null>) =
-    `is not`(Null { message(Null) })
+    `is not`(Null / { message(Null) })
 
 // isNotNull
 fun <T : Any> Asserter<T?>.isNotNull() =

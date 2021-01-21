@@ -6,7 +6,11 @@ import assert4k.internal.smartCast
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 import kotlin.reflect.KClass
-import kotlin.test.*
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.assertNotSame
+import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 /**
  * Assert that [actual] returns a `true` value
@@ -24,7 +28,7 @@ infix fun assert.that(withMessage: WithMessage<Boolean>) =
  * `` assert that { obj1 != obj2 } ``
  */
 infix fun assert.that(block: () -> Boolean) =
-    that(block { "Expected equation to return a true value" } )
+    that(block / "Expected equation to return a true value")
 
 @JvmName("thatBooleanLambdaWithMessage")
 infix fun assert.that(withMessage: WithMessage<() -> Boolean>) =
@@ -96,8 +100,8 @@ infix fun <T> Asserter<T>.notSame(withMessage: WithMessage<T>) =
  * `` assert that "hello" `is` type<CharSequence>()
  */
 @JsName("is$4")
-infix fun <T, V : Any> Asserter<T>.`is`(type: TypeHolder<V>) =
-    assert that value `is` type {
+infix fun <T, V : Any> Asserter<T>.`is`(type: TypeHolder<V>) {
+    assert that value `is` type / {
         buildString {
             append("Except value '$value' to be same type or sub-type of '${type.kClass.simpleName}', but is ")
             append(
@@ -106,12 +110,11 @@ infix fun <T, V : Any> Asserter<T>.`is`(type: TypeHolder<V>) =
             )
         }
     }
+}
 // region overloads
 @JsName("is$5")
 infix fun <T, V : Any> Asserter<T>.`is`(withMessage: WithMessage<TypeHolder<V>>) =
-    assert that (value != null && withMessage.value.kClass.isInstance(value)) {
-        withMessage.message
-    }
+    assert that (value != null && withMessage.value.kClass.isInstance(value)) / withMessage.message
 // endregion
 
 inline fun <reified T : Any> type() =
