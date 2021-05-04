@@ -1,22 +1,26 @@
 import com.github.dawnwords.jacoco.badge.JacocoBadgeGenerate
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import studio.forface.easygradle.publish.publish
 
 plugins {
-    val kotlinVersion = "1.4.20" // Nov 19, 2020
-    val dokkaVersion = "1.4.10.2" // Oct 20, 2020
+    val kotlinVersion = "1.4.32" // Apr 13, 2021
+    val dokkaVersion = "1.4.32" // Apr 22, 2021
 
-    kotlin("multiplatform") version kotlinVersion
     java
     jacoco
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("org.jetbrains.dokka") version dokkaVersion
-    id("studio.forface.easy-publish") version "0.2.4"
+    id("studio.forface.easy-publish") version "0.3.6"
+    kotlin("multiplatform") version kotlinVersion
 }
 
 kotlin {
 
     jvm()
-    js()
+    js {
+        browser()
+//        nodejs()
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -54,7 +58,7 @@ kotlin {
 }
 
 fun coroutines(post: String? = null) =
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core${post?.let { "-$it" } ?: ":1.4.1" }"
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
 
 tasks {
 
@@ -113,4 +117,4 @@ tasks {
     }
 }
 
-easyPublish {}
+publish {}

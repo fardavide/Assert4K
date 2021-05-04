@@ -61,6 +61,7 @@ for (file in files) {
                     val fixedName = origName
                         .replace(" ", "_")
                         .replace("'", "_")
+                        .replace("-", "_")
                     // Add `$#` if name already present in file
                     val finalName = fixedName.withIdentifier(fixedMap)
                     val indentation = line.takeWhile { c -> c == ' ' }

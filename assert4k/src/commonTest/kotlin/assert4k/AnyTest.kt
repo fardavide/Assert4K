@@ -113,13 +113,13 @@ internal class AnyTest {
     }
 
     @Test
-    @JsName("is_type_success_if_sub-type")
+    @JsName("is_type_success_if_sub_type")
     fun `is type success if sub-type`() {
         assert that Sub() `is` type<Super>()
     }
 
     @Test
-    @JsName("is_type_fails_if_super-type")
+    @JsName("is_type_fails_if_super_type")
     fun `is type fails if super-type`() {
         assert that fails {
             assert that Super() `is` type<Sub>()

@@ -37,7 +37,7 @@ jobs:
       - checkout
 
       - run:
-          name: "Publish to Bintray"
+          name: "Publish to Maven"
           command: ./gradlew uploadArchives
 
 workflows:
@@ -49,7 +49,7 @@ workflows:
             tags:
               only: /.*/
       - publish:
-          context: Bintray
+          context: Maven
           requires:
 #            - analyze
             - test
